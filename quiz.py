@@ -1,12 +1,14 @@
 # Variable score contains the user's answers
 score = 0
 
-# Function contains the Intro to the program, additionally provides options to start the quiz or see cheat codes for custom outcomes.
+# Function contains the Intro to the program
 def intro():
     print("How much money do you owe the IRS? Find out with this short quiz!")
     print("Respond with the number of each answer.")
     print("Entering anything other than a number will break the program!")
     print("-----------------------------------------------------------")
+    # Before the quiz starts, the user will be given the option to choose to go right ahead into the questions,
+    # OR optionally see "cheat codes" for the answers.
     print("Ready to get started?")
     print("1. Start quiz")
     print("2. Show cheat codes")
@@ -15,18 +17,30 @@ def intro():
         brandsOne() 
     elif answer == 2:
         cheatCodes()
+# Function contains "cheat codes" for how to get the various results in this quiz
 def cheatCodes():
     print("For result #1 - answer the questions in this order.")
     print("=====================")
+    # This is the cheatcode for getting the "you owe $52,189" result
     print("3,5,11,14,20,24,27,32")
     print("")
     print("For result #2 - answer the questions in this order.")
     print("=====================")
+    # This is the cheatcode for getting the "you owe $176,092" result 
     print("4,6,9,16,17,22,25,29")
     print("")
+    # This is the cheatcode for getting the "you owe nothing" result
     print("For result #3 - find a way to dodge the selected answers OR enter 0 for each question.")
-    
+    print("-----------------------------------------------------------")
+    # Present the user with the option to begin the quiz after they've been given the chance to review the codes
+    print("Ready to get started?")
+    print("1. Start quiz")
+    answer = int(input(">"))
+    if answer == 1:
+        brandsOne()
 # Function contains question one
+# Because I'm using functions, I've set the score variable as global for each of the question's functions.
+# This prevents the score variable from being rewritten as an entirely new variable each time
 def brandsOne():
     global score
     print("")
@@ -188,9 +202,8 @@ def scoreCounter():
         print("The End! After calculating your results.. you owe the IRS $52,189")
     elif score == 1675:
         print("The End! After calculating your results.. you owe the IRS $176,092")
-    # Prints an error if there is an error with the pointsCounter function
-    # Note: If the user typed in numbers that were not directed by the program, this error may also be printed.
+    # Will print a generic answer for any combination of numbers that were not already calculated above.
     else: 
-        print("Calculation error: check number crunches.")
+        print("The End! Afrer calculating your results.. you owe the IRS $1,484,036")
 # Starts the program
 intro()
